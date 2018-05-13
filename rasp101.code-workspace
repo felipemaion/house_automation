@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.autoSave": "onFocusChange",
+		"python.pythonPath":"/Users/felipemaion/anaconda3/envs/env2/bin/python"
+	}
+}
