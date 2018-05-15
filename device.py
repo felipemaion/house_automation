@@ -44,4 +44,66 @@ class Device:
         # [pin, io, description,state,high, on_off, name]
         return "[ {},{},{},{},{},{},\"{}\" ]".format(self.pin, self.io, 
         self.description, self.state, self.high,self.on_off, self.name)
-        
+    
+
+
+# Create a class that will control two or more Device at once.
+class ComposedDevice:
+    def __init__(self, *devices):
+        self.devices = devices
+        self.description = devices # Called by setter.
+        self.pin = devices
+        self.name = devices
+        self.io = "COMPOSED"
+        self.state = ""
+        self.high = ""
+        self.on_off = ""
+        # list($pin, $io, $description,$state,$high,$on_off, $name))
+
+    def swap_state(self):
+        for device in self.devices:
+            device.swap_state()
+
+
+
+    @property
+    def description(self):
+        return str(self._description)
+    
+    @description.setter
+    def description(self, devices):
+        descriptions = []
+        for device in devices:
+            descriptions.append(device.description.lower().capitalize())
+        self._description = "_".join(descriptions)
+        # return str(self._description)
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, devices):
+        # for device in devices:
+        description = self._description
+        self._name = "devices"+ description + str(self.pin)
+        return self._name
+
+
+    @property
+    def pin(self):
+        return self._pin
+    @pin.setter
+    def pin(self, devices):
+        pins = []
+        for device in devices:
+            pins.append(str(device.pin))
+        self._pin = "_".join(pins)
+        return self._pin
+
+    def __str__(self):
+        # This will be used to return to PHP, or print Device info.
+        # [pin, io, description,state,high, on_off, name]
+        return "[ {},{},{},{},{},{},\"{}\" ]".format(self.pin, self.io, 
+        self.description, self.state, self.high,self.on_off, self.name)
+    

@@ -54,7 +54,7 @@
         if(count($myArr)>1)
         $myArr[count($myArr)-1] = substr($myArr[count($myArr)-1],0,-1);
 
-        // Removing first last bracket for each dimenion and breaking it down further
+        // Removing first last bracket for each dimension and breaking it down further
         foreach ($myArr as $key => $value) {
         $value = substr($value,1);
         $myArr[$key] = array();

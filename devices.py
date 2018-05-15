@@ -1,5 +1,5 @@
 from corerasp import *
-from device import Device
+from device import Device, ComposedDevice
 
 # abajur 1 pin7  (GPIO4)
 # OFF 2 pin11 (GPIO17)
@@ -16,10 +16,30 @@ ledpanel = Device(11,"OUT","LED PANEL",0)
 computador = Device(12,"OUT","COMPUTADOR",0)
 tv = Device(13,"OUT","TV",0)
 ventilador = Device(15,"OUT","VENTILADOR",0)
-masturbador = Device(16,"OUT","MASTURBADOR",0)
+masturbador = Device(16,"OUT","DILDO",0)
 microondas = Device(18,"OUT","FORNO MICROONDAS",0)
 radio = Device(22,"OUT","RADIO",0)
-devices = [abajur,ledpanel,computador,tv,ventilador,masturbador,microondas,radio]
+rm = ComposedDevice(masturbador, radio) # Nada como ouvir música no ato...
+
+devices = [abajur,ledpanel,computador,tv,ventilador,microondas,masturbador, rm]
 
 def get_devices():
     return devices
+
+
+# class A:
+#     def __init__(self, name):
+#         self.name = name
+#     def __str__(self):
+#         return str(self.name)
+
+# class As:
+#     def __init__(self, *a):
+#         print(a)
+#         print(*a)
+
+
+
+# a1 = A("A1")
+# a2 = A("A2")
+# aa = As(a1,a2)
